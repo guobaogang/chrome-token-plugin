@@ -1,0 +1,22 @@
+{
+    "name": "token插件",
+    "version": "0.1",
+    "description": "token插件",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_title": "token插件",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["set_token.js"]
+    }],
+    "permissions": [
+        "cookies",
+        "tabs",
+        "http://localhost:3006/"
+    ]
+}
