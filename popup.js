@@ -1,5 +1,6 @@
 document.querySelector('#set_token').addEventListener('click', function (e) {
-    setCookie();
+    //setCookie();
+    getAll();
     /* sendMessageToContentScript({
         type: 'set',
         value: '你好，我是popup！'
@@ -8,6 +9,16 @@ document.querySelector('#set_token').addEventListener('click', function (e) {
     }); */
 })
 
+function getAll() {
+    chrome.cookies.get({
+        url: 'http://localhost:3006/',
+        name: 'nccloudsessionid'
+    }, function (cookies) {
+        console.log(cookies)
+    });
+}
+
+
 function setCookie() {
     var param = {
         url: 'http://localhost:3006/',
@@ -15,7 +26,7 @@ function setCookie() {
         value: 'plugin-test',
         path: '/'
     };
-    chrome.cookies.set(param, function(){
+    chrome.cookies.set(param, function () {
         console.log('set cookie success')
     });
 }
